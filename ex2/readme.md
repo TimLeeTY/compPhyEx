@@ -14,7 +14,9 @@ numbersections: false
 
 # Task 1
 
-The code used to tackle this task is contained in ```ODE.py``` and  ```energyPlot.py```. 2 methods for solving the coupled ODEs were used, first a 4th order Runge-Kuta method is implemented as the function ```RK4``` which finds the corresponding change in $\theta$ and $\omega$ for each time step. The second method involved using the ```integrate.odeint``` function from the ```scipy``` package which, according to online documentation, uses an implementation of LSODA. In terms of computation time, the method built in to ```scipy``` easily out-performed this particular implementation of the Runge-Kuta method by around a factor of 10.
+The code used to tackle this task is contained in ```ODE.py``` and  ```energyPlot.py```. 2 methods for solving the coupled ODEs were used, first a 4th order Runge-Kuta method is implemented as the function ```RK4``` which finds the corresponding change in $\theta$ and $\omega$ for each time step. The second method involved using the ```integrate.odeint``` function from the ```scipy``` package which, according to online documentation, uses an implementation of [LSODA]. In terms of computation time, the method built in to ```scipy``` easily out-performed this particular implementation of the Runge-Kuta method by around a factor of 10.
+
+[LSODA]:http://www.oecd-nea.org/tools/abstract/detail/uscd1227
 
 ## Energy Conservation
 
