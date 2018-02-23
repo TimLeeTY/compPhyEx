@@ -9,12 +9,12 @@ import numpy.fft as fft
 import matplotlib.pyplot as plt
 # units of microns used consistently
 
-# computes the aperture based on the slit width, number of slits and their separation
-# x coordinate scaled to match dimensions of Fourier transform by Delta=L/N
-
 
 def aper(d, N, L, funcA=lambda x, y, z: 1, slits=1, sep=None):
-    if sep == None:
+    """ computes the aperture based on the slit width, number of slits and their separation
+    x coordinate scaled to match dimensions of Fourier transform by Delta=L/N
+    """
+   if sep == None:
         sep = d
     elif sep < d or slits*sep > L or type(slits) != int:
         print('slit dimensions invalid')
@@ -29,12 +29,12 @@ def aper(d, N, L, funcA=lambda x, y, z: 1, slits=1, sep=None):
                         np.zeros(N-len(A)-int((N-len(A))/2))))
     return(A*fA)
 
-# computes the intensity on the screen a distance D away from an aperture A
-# takes the Fourier transform of A using N samples spaced evenly in L and scales
-# output accordingly
-
 
 def FFT(D, N, L, A, Fres=False):
+    """computes the intensity on the screen a distance D away from an aperture A
+    takes the Fourier transform of A using N samples spaced evenly in L and scales
+    output accordingly
+    """
     Delta = (L/N)
     x = np.arange(N)*Delta
     if Fres:
