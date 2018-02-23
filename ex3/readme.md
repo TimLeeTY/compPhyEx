@@ -29,7 +29,7 @@ $$\psi(y_j)=\sum_{m=0}^{N-1}A(x_m)\exp\left(2\pi i \,m\Delta f_j\right).$$ {#eq:
 
 Comparing @eq:1 with @eq:2 tells us that we can map $f_j$, the Fourier frequency, to $y$, the desired displacement by $y_j=f_jD\lambda$.
 
-The code used to tackle this exercise is all included in ```FFT.py```. 2 main functions were written, ```aper``` and ```FFT```, the former takes arguments that describe the aperture (like slit width and number of slits) and returns the aperture function as an array, ```A``` as a function of $x$ with increments of $\Delta$. ```FFT``` applies the fast Fourier transform (included in the ```numpy.fft``` package) and returns the power spectrum as an array along with appropriately scaled $y$ values.
+The code used to tackle this exercise is all included in `FFT.py`. 2 main functions were written, `aper` and `FFT`, the former takes arguments that describe the aperture (like slit width and number of slits) and returns the aperture function as an array, `A` as a function of $x$ with increments of $\Delta$. `FFT` applies the fast Fourier transform (included in the `numpy.fft` package) and returns the power spectrum as an array along with appropriately scaled $y$ values.
 
 \begin{figure} [H]
   \centering
@@ -52,7 +52,7 @@ Figure \ref{singleError} shows that the result obtained from the FFT agrees with
 
 ## Further work: double slits
 
-The aperture function ```aper``` was modified to be able to produce multiple slit apertures with some separation. While still far from a completely general aperture function, this allowed us to test whether the FFT produced reasonable patterns for the well known multiple slits cases.
+The aperture function `aper` was modified to be able to produce multiple slit apertures with some separation. While still far from a completely general aperture function, this allowed us to test whether the FFT produced reasonable patterns for the well known multiple slits cases.
 
 In particular, the double slits case was chosen due to its simple analytic solution. The pattern for 2 slits with width $d$ separated by $a$ was plotted along with the analytic solutions of:
 
@@ -60,7 +60,7 @@ In particular, the double slits case was chosen due to its simple analytic solut
 2. two infinitely narrow slits separated by $a$:
   $$|\psi_\mathrm{double}|^2\propto\cos^2\left(\frac{\pi a }{D\lambda}y\right).$$
 
-The intensity patterns are plotted in §1.3 of ```FFT.py``` and are shown in figure \ref{doubleSlit}.
+The intensity patterns are plotted in §1.3 of `FFT.py` and are shown in figure \ref{doubleSlit}.
 
 \begin{figure}[H]
 \captionsetup{width=0.9\textwidth}
@@ -72,11 +72,11 @@ The intensity patterns are plotted in §1.3 of ```FFT.py``` and are shown in fig
 
 # Task 2
 
-The code used for this task is included in §1.2 of ```FFT.py```. The single slit from the previous section is modified into a sinusoidal phase grating by multiplying the aperture function, $A(x)$ by $e^{i\phi(x)}$ where:
+The code used for this task is included in §1.2 of `FFT.py`. The single slit from the previous section is modified into a sinusoidal phase grating by multiplying the aperture function, $A(x)$ by $e^{i\phi(x)}$ where:
 
 $$\phi(x)=\frac{m}{2}\sin\left(\frac{2\pi x}{s}\right)$$
 
-through the ```funcA``` parameter of the ```FFT``` function. The resultant intensity is shown in figure \ref{sinSlit}.
+through the `funcA` parameter of the `FFT` function. The resultant intensity is shown in figure \ref{sinSlit}.
 
 \begin{figure}[H]
 \captionsetup{width=0.9\textwidth}
@@ -92,11 +92,11 @@ $$\Psi(y)\propto\int\diff x \, \exp\left(\frac{im}{2}\sin\left(\frac{2\pi x}{s}\
 
 While the integrand can not be readily evaluated without the use of Bessel functions, it can be appreciated that the integral will only be non-zero when the wavelength of the 2 terms match (by the orthogonality of sine and cosine.), giving rise to maxima at regular intervals. Further treatment of the integral reveals that the amplitude of the $n^{\mathrm{th}}$ peak from the centre is $\propto J_n(m/2)$ where $J_n$ is the $n^{\mathrm{th}}$ order Bessel function of the first kind, while their separation is given by $\lambda D/s$.
 
-To further investigate this, an animation was set up using the ```matplotlib.animation``` package in §1.2.1 of ```FFT.py```, which shows how the form of the intensity pattern changes with different $m$. As expected, it showed that varying $m$ had no effect on the separation of peaks, only their relative intensities. The result was outputted as an ```.mp4``` file and was therefore not submitted as part of this exercise.
+To further investigate this, an animation was set up using the `matplotlib.animation` package in §1.2.1 of `FFT.py`, which shows how the form of the intensity pattern changes with different $m$. As expected, it showed that varying $m$ had no effect on the separation of peaks, only their relative intensities. The result was outputted as an `.mp4` file and was therefore not submitted as part of this exercise.
 
 # Supplementary Task
 
-The code used for this task is included in §2 of ```FFT.py```. The implementation of Fresnel effects was done simply by multiplying the aperture function by the quadratic exponential $\exp\left(ikx^2/2D\right)$ (see @eq:1), returning to the non-approximated form of the aperture integral.
+The code used for this task is included in §2 of `FFT.py`. The implementation of Fresnel effects was done simply by multiplying the aperture function by the quadratic exponential $\exp\left(ikx^2/2D\right)$ (see @eq:1), returning to the non-approximated form of the aperture integral.
 
 \begin{figure}
 \captionsetup{width=0.9\textwidth}
@@ -118,4 +118,4 @@ For the single slit case (shown in figure \ref{singleFres}), we compared the res
 
 The result for the sinusoidal phase grating is perhaps more surprising as it is rather dissimilar to the far field case (figure \ref{sinSlit}). Crucially, it seems to break symmetry about $y=0$ as the intensity peak on the far left is noticeably greater than the its counterpart on the right. This can be reconciled with the asymmetry in the phase grating which has an odd parity about $x=0$. However, unlike the single slit case, this FFT required $N=2^{16}$ before the answer converged to the pattern in figure \ref{sinSlitFres} (no noticeable difference for $N$ up to $2^{22}$), a factor of $2^5$ greater than the minimum of $2^{11}$ for the Fraunhofer case.
 
-Finally, again as a small extra challenge, a second animation was created to show the intensity patterns in the regime where $D \sim d^2/2$ for a single slit. This was an attempt to reconcile the two extreme limits and was done mainly out of personal curiosity. See §3 of ```FFT.py```.
+Finally, again as a small extra challenge, a second animation was created to show the intensity patterns in the regime where $D \sim d^2/2$ for a single slit. This was an attempt to reconcile the two extreme limits and was done mainly out of personal curiosity. See §3 of `FFT.py`.
