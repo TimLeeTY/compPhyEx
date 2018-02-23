@@ -14,13 +14,13 @@ numbersections: false
 
 # Task 1
 
-The code used to tackle this task is contained in ```ODE.py``` and  ```energyPlot.py```. 2 methods for solving the coupled ODEs were used, first a 4th order Runge-Kuta method is implemented as the function ```RK4``` which finds the corresponding change in $\theta$ and $\omega$ for each time step. The second method involved using the ```integrate.odeint``` function from the ```scipy``` package which, according to online documentation, uses an implementation of [LSODA]. In terms of computation time, the method built in to ```scipy``` easily out-performed this particular implementation of the Runge-Kuta method by around a factor of 10.
+The code used to tackle this task is contained in `ODE.py` and  `energyPlot.py`. 2 methods for solving the coupled ODEs were used, first a 4th order Runge-Kuta method is implemented as the function `RK4` which finds the corresponding change in $\theta$ and $\omega$ for each time step. The second method involved using the `integrate.odeint` function from the `scipy` package which, according to online documentation, uses an implementation of [LSODA]. In terms of computation time, the method built in to `scipy` easily out-performed this particular implementation of the Runge-Kuta method by around a factor of 10.
 
 [LSODA]:http://www.oecd-nea.org/tools/abstract/detail/uscd1227
 
 ## Energy Conservation
 
-The total energy of the system (kinetic and potential) is calculated and used to test how well either method conserves energy in the undriven and undamped case for up to $\sim 10^4$ oscillations. The code for this is in ```energyPlot.py``` and §5 of ```ODE.py```. Due to long computation times, the results are written into ```energyDiffOut.csv``` which is then read and plotted in ```energyPlot.py```.
+The total energy of the system (kinetic and potential) is calculated and used to test how well either method conserves energy in the undriven and undamped case for up to $\sim 10^4$ oscillations. The code for this is in `energyPlot.py` and §5 of `ODE.py`. Due to long computation times, the results are written into `energyDiffOut.csv` which is then read and plotted in `energyPlot.py`.
 
 \begin{figure}[H]
 \captionsetup{width=0.9\textwidth}
@@ -33,7 +33,7 @@ While the Runge-Kuta method is inefficient time-wise, it produces a more accurat
 
 ## Period vs. amplitude
 
-The period of oscillations is found by determining the average time between when $\omega$ changes sign. This is handled by passing the angular velocity vector into ```period```. The period is then found for a range of initial displacements, $\theta_0\in [0,\pi]$ for the undamped and undriven case. The code for this is in §1 of ```ODE.py```.
+The period of oscillations is found by determining the average time between when $\omega$ changes sign. This is handled by passing the angular velocity vector into `period`. The period is then found for a range of initial displacements, $\theta_0\in [0,\pi]$ for the undamped and undriven case. The code for this is in §1 of `ODE.py`.
 
 \begin{figure}[H]
 \captionsetup{width=0.9\textwidth}
@@ -46,7 +46,7 @@ As expected, in the limit of small displacements, the period of oscillations agr
 
 # Task 2
 
-We now turn towards the effects of adding damping and a driving force to the pendulum.  The code for this is in §2 of ```ODE.py```.
+We now turn towards the effects of adding damping and a driving force to the pendulum.  The code for this is in §2 of `ODE.py`.
 
 ## Effects of damping
 
@@ -59,7 +59,7 @@ $$ \frac{2q}{\sqrt{g/l}}=\zeta
 >1 & \text{overdamped}
 \end{cases}$$
 
-As we took $g=l=1$, critical damping occurs when $q=2$. Hence we chose to plot $\theta$ and $\omega$ for $q=0.5,2,5$. This is done in the first half of §2 of ```ODE.py```.
+As we took $g=l=1$, critical damping occurs when $q=2$. Hence we chose to plot $\theta$ and $\omega$ for $q=0.5,2,5$. This is done in the first half of §2 of `ODE.py`.
 
 \begin{figure}[H]
   \centering
@@ -73,7 +73,7 @@ For the underdamped case ($q=0.5$), oscillations are still observed, but the amp
 
 ## Effects of a driving force
 
-Next, we fix $q=0.5$ and vary the amplitude of the driving force (with frequency $\Omega_\mathrm{D}= \SI{2/3}{\radian \second^{-1}}$) with $F=0.5, 1.2, 1.44, 1.465$. This is done in the second half of §2 of ```ODE.py```.
+Next, we fix $q=0.5$ and vary the amplitude of the driving force (with frequency $\Omega_\mathrm{D}= \SI{2/3}{\radian \second^{-1}}$) with $F=0.5, 1.2, 1.44, 1.465$. This is done in the second half of §2 of `ODE.py`.
 
 \begin{figure}[H]
   \centering
@@ -99,7 +99,7 @@ For even larger values of $F$, we find 2 special cases where $F=1.44, 1.465$ whe
 
 ## $\theta$ vs. $\omega$ graphs
 
-To better demonstrate the changes in period described in the previous section, we plotted graphs of $\omega$ against $\theta$. The code for this is in §3 of ```ODE.py```. The graphs shown in figure \ref{omegaVStheta} are for durations of $50\,T_\mathrm{D}$.
+To better demonstrate the changes in period described in the previous section, we plotted graphs of $\omega$ against $\theta$. The code for this is in §3 of `ODE.py`. The graphs shown in figure \ref{omegaVStheta} are for durations of $50\,T_\mathrm{D}$.
 
 
 \begin{figure}
@@ -131,17 +131,18 @@ For the 2 special cases, we can clearly see that while figure \ref{f=1.44} has 2
 
 # Supplementary task 1
 
-Finally we investigate the sensitivity of resulting motion to initial case in the 'erratic' case where $F=1.2$. The code for this is in §4 of ```ODE.py```. $\theta$ is plotted as functions of time for 3 different initial displacements $\theta_0=\SI{0.2}{\radian}$, $\theta_0=\SI{0.20001}{\radian}$ and $\theta_0=\SI{0.20000001}{\radian}$, a difference of 1 in $2\times 10^3$ and 1 in $2\times 10^6$ respectively,
+Finally we investigate the sensitivity of resulting motion to initial case in the 'erratic' case where $F=1.2$. The code for this is in §4 of `ODE.py`. $\theta$ is plotted as functions of time for 3 different initial displacements $\theta_0=\SI{0.2}{\radian}$, $\theta_0=\SI{0.20001}{\radian}$ and $\theta_0=\SI{0.20000001}{\radian}$, a difference of 1 in $2\times 10^3$ and 1 in $2\times 10^6$ respectively,
 
 \begin{figure}[H]
-\captionsetup{width=0.9\textwidth}
-\centering
-{\includegraphics[width=3.5in]{chaotic.pdf}}
-\caption{Displacement as functions of time for initial conditions $\theta_0=\SI{0.2}{\radian}$ (blue), $\theta_0=\SI{0.20001}{\radian}$ (orange) and $\theta_0=\SI{0.20000001}{\radian}$ (green). The time is in units of $T_\mathrm{D}$, the period of the driving force.}
+    \captionsetup{width=0.9\textwidth}
+    \centering{
+        \includegraphics[width=3.5in]{chaotic.pdf}}
+    \caption{
+        Displacement as functions of time for initial conditions $\theta_0=\SI{0.2}{\radian}$ (blue), $\theta_0=\SI{0.20001}{\radian}$ (orange) and $\theta_0=\SI{0.20000001}{\radian}$ (green). The time is in units of $T_\mathrm{D}$, the period of the driving force.}
 \end{figure}
 
 While the solutions initially seem identical, at around $10 \, T_\mathrm{D}$, they diverge dramatically and become increasingly dissimilar. In this case, we have used the more accurate Runge-Kuta method which has shown to be correct to within 1 in $10^8$ over $10000$ natural oscillations, suggesting that this is not a fault in the integration and that the system is indeed very sensitive to initial conditions.
 
 As we would expect, smaller differences in initial conditions meant it took longer for the displacement to deviate. However, this deviation time seems to increase very slowly even for significant changes in $\Delta\theta_0$. This has been tested for differences in $\theta_0$ down to 1 in $2\times 10^{10}$ after which point errors in the integration method is expected to dominate.
 
-Finally, as an extra challenge, the pendulums with $\theta_0=\SI{0.2}{\radian}$ and $\theta_0=\SI{0.20001}{\radian}$ were animated in the final section of the code which utilises the ```matplotlib.animation``` package to show the pendulum as it evolves over time and is outputted as an ```.mp4``` file. However, it has proven to be computationally intensive and has not provided any meaningful physical insight and so has been left commented out.
+Finally, as an extra challenge, the pendulums with $\theta_0=\SI{0.2}{\radian}$ and $\theta_0=\SI{0.20001}{\radian}$ were animated in the final section of the code which utilises the `matplotlib.animation` package to show the pendulum as it evolves over time and is outputted as an `.mp4` file. However, it has proven to be computationally intensive and has not provided any meaningful physical insight and so has been left commented out.
