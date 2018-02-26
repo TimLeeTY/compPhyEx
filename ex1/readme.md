@@ -66,10 +66,9 @@ The code used to tackle this is included in §1 of `fresnel.py`, the real part o
 
 # Supplementary task 2
 
-By scaling the x coordinate accordingly, `c(u)` and `s(u)` are used to evaluate the relative amplitude and phase of the wavefunction at the screen. The code used to tackle this is included in §2 of `fresnel.py`.
+By scaling the x coordinate accordingly, `c(u)` and `s(u)` are used to evaluate the relative amplitude and phase of the wavefunction at the screen. The code used to tackle this is included in §2 of `fresnel.py`. 
 
-\begin{figure}
-\captionsetup{width=0.8\textwidth}
+\begin{figure} \captionsetup{width=0.8\textwidth}
 \centering
 {\includegraphics[width=4.5in]{FresnelSlitAmp.pdf}}
 \caption{The relative intensity of the diffraction pattern on the screen along $x$ for the three different slit widths $D$.}

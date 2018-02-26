@@ -14,7 +14,7 @@ def aper(d, N, L, funcA=lambda x, y, z: 1, slits=1, sep=None):
     """ computes the aperture based on the slit width, number of slits and their separation
     x coordinate scaled to match dimensions of Fourier transform by Delta=L/N
     """
-   if sep == None:
+    if sep == None:
         sep = d
     elif sep < d or slits*sep > L or type(slits) != int:
         print('slit dimensions invalid')
