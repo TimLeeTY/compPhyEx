@@ -6,7 +6,9 @@ header-includes:
   - \usepackage{fullpage}
   - \usepackage{xfrac}
   - \usepackage{float}
+  - \usepackage{subfig}
   - \usepackage{siunitx}
+  - \usepackage{caption}
   - \newcommand*\diff{\mathop{}\!\mathrm{d}}
   - \DeclareMathOperator{\sinc}{sinc}
 author: Tim Lee, tyl35

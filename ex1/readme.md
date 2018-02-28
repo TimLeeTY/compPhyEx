@@ -6,6 +6,8 @@ header-includes:
   - \usepackage{fullpage}
   - \usepackage{xfrac}
   - \usepackage{float}
+  - \usepackage{caption}
+  - \usepackage{subfig}
   - \newcommand*\diff{\mathop{}\!\mathrm{d}}
 author: Tim Lee, tyl35
 numbersections: false
