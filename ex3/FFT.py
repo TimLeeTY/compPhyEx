@@ -269,7 +269,7 @@ N = 2**18  # minimum for sensible result 2^16, using 2^18 due to low marginal co
 [y, powerFFT] = FFT(D, N, L, aper(d, N, L, funcA=funcA), Fres=True)
 
 plt.figure()
-plt.xlim(-25,25)
+plt.xlim(-25, 25)
 plt.ylim(0, 1.05)
 plt.plot(y/1000, powerFFT/powerFFT.max(), '-', lw=1)
 plt.xlabel(r'$y$/mm')
