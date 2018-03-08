@@ -32,7 +32,7 @@ Our estimate of the integral clearly converges to the true value; with up to $N=
 
 ## Problems
 
-One problem that was encountered when developing the code was a memory limit imposed by MCS operating system. In particular, the number of elements in a `float64` array could not exceed $\sim 5.5 \times 10^6$, meaning that instead of starting with an array of $8\times N\times n$ random numbers, a `for` loop over the $n$ trials was implemented to reach larger values of $N$. Fortunately, this proved not to hinder performance given the small values of $n$ used.
+One problem that was encountered when developing the code was a memory limit imposed by the MCS operating system. In particular, the number of elements in a `float64` array could not exceed $\sim 5.5 \times 10^6$, meaning that instead of starting with an array of $8 \times N \times n$ random numbers, a `for` loop over the $n$ trials was implemented to reach larger values of $N$. Fortunately, this proved not to hinder performance given the small values of $n$ used.
 
 # Supplementary task 1
 
@@ -40,7 +40,7 @@ One problem that was encountered when developing the code was a memory limit imp
 
 $$\sigma \approx V\left(\frac{\langle f^2 \rangle-\langle f \rangle ^2}{N}\right)^{\sfrac{1}{2}},$$
 
-which gives an estimate of the error, and the second method involved performing the Monte-Carlo integration 25 times and taking the standard deviation of results for each $N$. The code for this section is included in §2 of `numint.py`.
+which gives an estimate of the error, and the second method involved performing the Monte-Carlo integration 25 times and taking the standard deviation of results for each $N$ which is justified as we expect the random numbers sampled to be uncorelated. The code for this section is included in §2 of `numint.py`.
 
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
